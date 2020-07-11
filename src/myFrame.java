@@ -54,12 +54,48 @@ public class myFrame extends JFrame {
         title.setFont(font);
         panel.add(title, BorderLayout.NORTH);
 
+        showPanel();
+
+        chooseNumbers(buttons,buttons2);
+
+        btninfo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(panel, "Προγραμματιστης : Ψαλτακης Νικολαος StormRideR "
+                                + "(c)2019 - 2020 \nΈκδοση Προγράμματος V3 \nΠρόγραμμα Προσομοίωσης του παιχνιδιού ΤΖΟΚΕΡ του ΟΠΑΠ\n" + "Το Πρόγραμμα έχιε φτιαχτεί για εκπαιδευιτκούς σκοπούς και καμία "
+                                + "Σχέση δεν έχει με το επίσημο πρόγραμμα του ΟΠΑΠ",
+                        "ΠΛΗΡΟΦΟΡΙΕΣ", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+        grid.add(panelgrid);
+        grid.add(panelgrid2);
+        buttongrid.add(btn1);
+        buttongrid.add(btn2);
+        buttongrid.add(btninfo);
+        panel.add(grid, BorderLayout.CENTER);
+        panel.add(buttongrid, BorderLayout.SOUTH);
+
+        this.setContentPane(panel);
+        this.setVisible(true);
+        this.setSize(960,800);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //this.setResizable(false);
+        //setLocationRelativeTo(null);
+        this.setTitle("Παίχνιδι Tzoker!!!");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void showPanel() {
         for (int i = 0; i<noumera.length; i++) {
             noumera[i] = i+1;
         }
         for (int i = 0; i<tzoker.length; i++) {
             tzoker[i] = i+1;
         }
+    }
+
+    public void chooseNumbers (JButton[] buttons, JButton[] buttons2) {
         for (int i = 0; i<buttons.length; i++) {
             buttons[i] = new JButton(String.valueOf(noumera[i]));
             buttons[i].setSize(80, 80);
@@ -73,10 +109,11 @@ public class myFrame extends JFrame {
                         noumera_xristi[k] = choise+1;
                         k++;
                     }
-            }
+                }
             });
             panelgrid.add(buttons[i]);
         }
+
         for (int i = 0; i<buttons2.length; i++) {
             buttons2[i] = new JButton(String.valueOf(tzoker[i]));
             buttons2[i].setSize(80, 80);
@@ -135,7 +172,7 @@ public class myFrame extends JFrame {
                         getTzoker = true;
                     }
                     JOptionPane.showMessageDialog(panel, "Η ΝΙΚΗΤΡΙΑ ΣΤΥΛΗ ΤΖΟΚΕΡ ΕΙΝΑΙ Η " + nikitirioi[0] + "-" + nikitirioi[1] + "-" + nikitirioi[2] + "-" + nikitirioi[3] + "-" + nikitirioi[4]
-                            + "\n Ο ΑΡΙΘΜΟΣ ΤΖΟΚΕΡ ΕΙΝΑΙ Ο " + tzoker_nikitirios ,
+                                    + "\n Ο ΑΡΙΘΜΟΣ ΤΖΟΚΕΡ ΕΙΝΑΙ Ο " + tzoker_nikitirios ,
                             "ΠΛΗΡΟΦΟΡΙΕΣ", JOptionPane.INFORMATION_MESSAGE);
                     if (getTzoker) {
                         if (metritis == 0) {
@@ -180,31 +217,5 @@ public class myFrame extends JFrame {
                 k=0;
             }
         });
-
-        btninfo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(panel, "Προγραμματιστης : Ψαλτακης Νικολαος StormRideR "
-                                + "(c)2019 - 2020 \nΈκδοση Προγράμματος V3 \nΠρόγραμμα Προσομοίωσης του παιχνιδιού ΤΖΟΚΕΡ του ΟΠΑΠ\n" + "Το Πρόγραμμα έχιε φτιαχτεί για εκπαιδευιτκούς σκοπούς και καμία "
-                                + "Σχέση δεν έχει με το επίσημο πρόγραμμα του ΟΠΑΠ",
-                        "ΠΛΗΡΟΦΟΡΙΕΣ", JOptionPane.INFORMATION_MESSAGE);
-            }
-        });
-
-        grid.add(panelgrid);
-        grid.add(panelgrid2);
-        buttongrid.add(btn1);
-        buttongrid.add(btn2);
-        buttongrid.add(btninfo);
-        panel.add(grid, BorderLayout.CENTER);
-        panel.add(buttongrid, BorderLayout.SOUTH);
-
-        this.setContentPane(panel);
-        this.setVisible(true);
-        this.setSize(960,800);
-        this.setResizable(false);
-        setLocationRelativeTo(null);
-        this.setTitle("Παίχνιδι Tzoker!!!");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
